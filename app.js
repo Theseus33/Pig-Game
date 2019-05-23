@@ -84,21 +84,44 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     document.querySelector('#current-' + activePlayer).textContent = roundScore;
   } else {
     //Next player when someone rolls a 1    
-    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-    roundScore = 0;
-    //show zero in UI
-    document.getElementById('current-0').textContent = '0';
-    document.getElementById('current-1').textContent = '0';
-    //when player switches change active classs to highlight current player in the UI
-    //document.querySelector('.player-0-panel').classList.remove('active');
-    //document.querySelector('.player-1-panel').classList.add('active');
-    //toggle does this better removing the active class if there and vice versa
-    document.querySelector('.player-0-panel').classList.toggle('active');
-    document.querySelector('.player-1-panel').classList.toggle('active');
-
-    document.querySelector('.dice').style.display = 'none';
+    nextPlayer();
   }
 });
 
 
-document.querySelector('.btn-roll').addEventListener('click', btn);
+document.querySelector('.btn-hold').addEventListener('click', function () {
+  //Add current score to GLOBAL score
+  scores[activePlayer] += roundScore;
+
+  //Update UI
+  document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+
+  //Check if player won the game
+
+
+  //next player functionality
+  nextPlayer();
+
+
+
+});
+
+//DRY principle = implemnt a function to make it scalable/changable 
+//doesnt recieve params doesnt return anything just checks to call next player
+//replacing the code portion above as well as further higher above.
+function nextPlayer() {
+  //Next player when someone rolls a 1    
+  activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+  roundScore = 0;
+  //show zero in UI
+  document.getElementById('current-0').textContent = '0';
+  document.getElementById('current-1').textContent = '0';
+  //when player switches change active classs to highlight current player in the UI
+  //document.querySelector('.player-0-panel').classList.remove('active');
+  //document.querySelector('.player-1-panel').classList.add('active');
+  //toggle does this better removing the active class if there and vice versa
+  document.querySelector('.player-0-panel').classList.toggle('active');
+  document.querySelector('.player-1-panel').classList.toggle('active');
+
+  document.querySelector('.dice').style.display = 'none';
+}
