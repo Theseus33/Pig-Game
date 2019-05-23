@@ -89,6 +89,14 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     //show zero in UI
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0';
+    //when player switches change active classs to highlight current player in the UI
+    //document.querySelector('.player-0-panel').classList.remove('active');
+    //document.querySelector('.player-1-panel').classList.add('active');
+    //toggle does this better removing the active class if there and vice versa
+    document.querySelector('.player-0-panel').classList.toggle('active');
+    document.querySelector('.player-1-panel').classList.toggle('active');
+
+    document.querySelector('.dice').style.display = 'none';
   }
 });
 
