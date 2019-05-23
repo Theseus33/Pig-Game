@@ -97,12 +97,17 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
   document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
   //Check if player won the game
-
-
-  //next player functionality
-  nextPlayer();
-
-
+  if (scores[activePlayer] >= 100) {
+    document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
+    //not the best way to hide the dice, better would be to make an active class and toggle it
+    document.querySelector('.dice').style.display = 'none';
+    //removing the active player
+    document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+    document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+  } else {
+    //next player functionality
+    nextPlayer();
+  }
 
 });
 
