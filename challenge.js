@@ -56,8 +56,18 @@ document.querySelector(".btn-hold").addEventListener("click", function() {
     document.querySelector("#score-" + activePlayer).textContent =
       scores[activePlayer];
 
+    var input = document.querySelector(".final-score").value;
+    var winningScore;
+    //undefined, 0, null or "" are COERCED to false
+    //anything else is COERCED to true
+    if (input) {
+      winningScore = input;
+    } else {
+      winningScore = 100;
+    }
+
     //Check if player won the game
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= winningScore) {
       document.querySelector("#name-" + activePlayer).textContent = "Winner!";
       //not the best way to hide the dice, better would be to make an active class and toggle it
       document.querySelector(".dice").style.display = "none";
