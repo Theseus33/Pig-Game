@@ -83,8 +83,12 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     roundScore += dice;
     document.querySelector('#current-' + activePlayer).textContent = roundScore;
   } else {
-    //Next player
-
+    //Next player when someone rolls a 1    
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    roundScore = 0;
+    //show zero in UI
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
   }
 });
 
