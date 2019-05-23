@@ -9,10 +9,6 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, gamePlaying;
-
-init();
-
 //dice logic
 //dice = Math.floor(Math.random() * 6) + 1;
 
@@ -66,6 +62,9 @@ init();
 //document.getElementById('current-0').textContent = '0';
 //document.getElementById('current-0').textContent = '0';
 
+var scores, roundScore, activePlayer, gamePlaying;
+
+init();
 
 document.querySelector('.btn-roll').addEventListener('click', function () {
   if (gamePlaying) {
@@ -118,7 +117,7 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
 //doesnt recieve params doesnt return anything just checks to call next player
 //replacing the code portion above as well as further higher above.
 function nextPlayer() {
-  //Next player when someone rolls a 1    
+  //Next player   
   activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
   roundScore = 0;
   //show zero in UI
@@ -137,7 +136,7 @@ function nextPlayer() {
 document.querySelector('.btn-new').addEventListener('click', init);
 
 function init() {
-  score = [0, 0];
+  scores = [0, 0];
   activePlayer = 0;
   roundScore = 0;
   gamePlaying = true;
@@ -147,9 +146,10 @@ function init() {
   document.getElementById('score-0').textContent = '0';
   document.getElementById('score-1').textContent = '0';
   document.getElementById('current-0').textContent = '0';
-  document.getElementById('current-0').textContent = '0';
+  document.getElementById('current-1').textContent = '0';
   document.getElementById('name-0').textContent = 'Player 1';
   document.getElementById('name-1').textContent = 'Player 2';
+
   document.querySelector('.player-0-panel').classList.remove('winner');
   document.querySelector('.player-1-panel').classList.remove('winner');
   document.querySelector('.player-0-panel').classList.remove('active');
